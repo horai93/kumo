@@ -1,6 +1,6 @@
 {
   "name": "kumo",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Cloudflare Workers TUI manager",
   "type": "module",
   "private": true,
