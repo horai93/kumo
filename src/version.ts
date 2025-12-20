@@ -1,5 +1,5 @@
 const GITHUB_REPO = 'horai93/kumo'
-const CURRENT_VERSION = '0.3.0'
+const CURRENT_VERSION = '0.3.1'
 
 interface GitHubRelease {
   tag_name: string
