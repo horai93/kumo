@@ -19,7 +19,7 @@ jobs:
             artifact: kumo-linux-arm64
           - os: macos-latest
             artifact: kumo-darwin-arm64
-          - os: macos-13-large
+          - os: macos-15-large
             artifact: kumo-darwin-x64
 
     runs-on: ${{ matrix.os }}
