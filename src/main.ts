@@ -11,7 +11,7 @@ import {
 try {
   await cli(process.argv.slice(2), defaultCommand, {
     name: 'kumo',
-    version: '0.1.0',
+    version: '0.2.1',
     description: 'Cloudflare Workers TUI manager',
     subCommands: {
       'config:get-account': configGetAccountCommand,
