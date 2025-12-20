@@ -65,7 +65,8 @@ export const listCommand = define({
 
       console.log(`\nWorkers (${workers.length}):\n`)
       for (const worker of workers) {
-        const modified = new Date(worker.modified_on).toLocaleDateString()
+        const date = new Date(worker.modified_on)
+        const modified = `${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}`
         console.log(`  ${worker.id}  (modified: ${modified})`)
       }
       console.log()

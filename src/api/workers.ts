@@ -10,5 +10,5 @@ export async function getWorkers(client: CloudflareClient, accountId: string): P
 }
 
 export function getWorkerDashboardUrl(accountId: string, workerName: string): string {
-  return `https://dash.cloudflare.com/${accountId}/workers/services/view/${workerName}`
+  return `https://dash.cloudflare.com/${accountId}/workers/services/view/${workerName}/production`
 }
