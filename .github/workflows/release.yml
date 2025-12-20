@@ -14,9 +14,13 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            targets: linux-x64 linux-arm64
+            artifact: kumo-linux-x64
+          - os: ubuntu-24.04-arm
+            artifact: kumo-linux-arm64
           - os: macos-latest
-            targets: darwin-arm64 darwin-x64
+            artifact: kumo-darwin-arm64
+          - os: macos-13-large
+            artifact: kumo-darwin-x64
 
     runs-on: ${{ matrix.os }}
 
@@ -30,18 +34,18 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build binaries
+      - name: Build
+        run: bun build --compile --minify ./src/main.ts --outfile ${{ matrix.artifact }}
+
+      - name: Compress
         run: |
-          for target in ${{ matrix.targets }}; do
-            bun build --compile --minify --target=bun-$target ./src/main.ts --outfile kumo-$target
-            chmod +x kumo-$target
-            tar -czvf kumo-$target.tar.gz kumo-$target
-          done
+          chmod +x ${{ matrix.artifact }}
+          tar -czvf ${{ matrix.artifact }}.tar.gz ${{ matrix.artifact }}
 
       - uses: actions/upload-artifact@v4
         with:
-          name: binaries-${{ matrix.os }}
-          path: "*.tar.gz"
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}.tar.gz
 
   release:
     needs: build
@@ -54,9 +58,6 @@ jobs:
         with:
           path: artifacts
           merge-multiple: true
-
-      - name: List artifacts
-        run: ls -la artifacts/
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
