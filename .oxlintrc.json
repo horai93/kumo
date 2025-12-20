@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["import", "typescript", "unicorn"],
+  "rules": {
+    "eqeqeq": "warn",
+    "no-console": "off",
+    "unicorn/no-null": "off"
+  }
+}
