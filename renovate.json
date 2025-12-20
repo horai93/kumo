@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "schedule": ["before 9am on monday"],
+  "timezone": "Asia/Tokyo",
+  "labels": ["deps"],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "minimumReleaseAge": "7 days",
+  "packageRules": [
+    {
+      "matchPackageNames": ["@typescript/native-preview", "oxlint", "oxfmt"],
+      "minimumReleaseAge": null
+    }
+  ]
+}
