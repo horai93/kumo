@@ -2,6 +2,7 @@ import { statSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { parse } from 'smol-toml'
+import xdgAppPaths from 'xdg-app-paths'
 
 export interface WranglerConfig {
   oauth_token: string
@@ -19,9 +20,8 @@ function isDirectory(path: string): boolean {
 }
 
 export function getGlobalWranglerConfigPath(): string {
+  const xdgConfigDir = xdgAppPaths('.wrangler').config()
   const legacyConfigDir = join(homedir(), '.wrangler')
-  const xdgConfigHome = process.env.XDG_CONFIG_HOME || join(homedir(), '.config')
-  const xdgConfigDir = join(xdgConfigHome, '.wrangler')
 
   // Prefer legacy path if it exists
   if (isDirectory(legacyConfigDir)) {

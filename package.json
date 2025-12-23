@@ -1,6 +1,6 @@
 {
   "name": "kumo",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Cloudflare Workers TUI manager",
   "type": "module",
   "private": true,
@@ -18,9 +18,10 @@
     "build:windows": "bun build --compile --target=bun-windows-x64 ./src/main.ts --outfile kumo.exe"
   },
   "dependencies": {
-    "gunshi": "0.27.4",
     "@inquirer/prompts": "8.1.0",
-    "smol-toml": "1.5.2"
+    "gunshi": "0.27.4",
+    "smol-toml": "1.5.2",
+    "xdg-app-paths": "^8.3.0"
   },
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20251219.1",
