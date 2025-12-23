@@ -1,9 +1,8 @@
-import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { stringify } from 'smol-toml'
-import type { WranglerConfig } from './wrangler.ts'
+import { getGlobalWranglerConfigPath, type WranglerConfig } from './wrangler.ts'
 
-const WRANGLER_CONFIG_PATH = join(homedir(), '.wrangler', 'config', 'default.toml')
+const WRANGLER_CONFIG_PATH = join(getGlobalWranglerConfigPath(), 'config', 'default.toml')
 
 const CLOUDFLARE_OAUTH_URL = 'https://dash.cloudflare.com/oauth2/token'
 const CLOUDFLARE_CLIENT_ID = '54d11594-84e4-41aa-b438-e81b8fa78ee7'

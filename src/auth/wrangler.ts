@@ -1,3 +1,4 @@
+import { statSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { parse } from 'smol-toml'
@@ -9,7 +10,27 @@ export interface WranglerConfig {
   scopes: string[]
 }
 
-const WRANGLER_CONFIG_PATH = join(homedir(), '.wrangler', 'config', 'default.toml')
+function isDirectory(path: string): boolean {
+  try {
+    return statSync(path).isDirectory()
+  } catch {
+    return false
+  }
+}
+
+export function getGlobalWranglerConfigPath(): string {
+  const legacyConfigDir = join(homedir(), '.wrangler')
+  const xdgConfigHome = process.env.XDG_CONFIG_HOME || join(homedir(), '.config')
+  const xdgConfigDir = join(xdgConfigHome, '.wrangler')
+
+  // Prefer legacy path if it exists
+  if (isDirectory(legacyConfigDir)) {
+    return legacyConfigDir
+  }
+  return xdgConfigDir
+}
+
+const WRANGLER_CONFIG_PATH = join(getGlobalWranglerConfigPath(), 'config', 'default.toml')
 
 export async function loadWranglerConfig(): Promise<WranglerConfig> {
   const file = Bun.file(WRANGLER_CONFIG_PATH)
