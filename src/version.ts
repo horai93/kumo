@@ -1,5 +1,7 @@
+import pkg from '../package.json'
+
 const GITHUB_REPO = 'horai93/kumo'
-const CURRENT_VERSION = '0.3.1'
+const CURRENT_VERSION = pkg.version
 
 interface GitHubRelease {
   tag_name: string
