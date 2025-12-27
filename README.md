@@ -24,19 +24,19 @@ Download the latest binary from [Releases](https://github.com/horai93/kumo/relea
 ```bash
 # macOS (Apple Silicon)
 curl -L https://github.com/horai93/kumo/releases/latest/download/kumo-darwin-arm64.tar.gz | tar xz
-sudo mv kumo-darwin-arm64 /usr/local/bin/kumo
+sudo mv kumo /usr/local/bin/
 
 # macOS (Intel)
 curl -L https://github.com/horai93/kumo/releases/latest/download/kumo-darwin-x64.tar.gz | tar xz
-sudo mv kumo-darwin-x64 /usr/local/bin/kumo
+sudo mv kumo /usr/local/bin/
 
 # Linux (x64)
 curl -L https://github.com/horai93/kumo/releases/latest/download/kumo-linux-x64.tar.gz | tar xz
-sudo mv kumo-linux-x64 /usr/local/bin/kumo
+sudo mv kumo /usr/local/bin/
 
 # Linux (arm64)
 curl -L https://github.com/horai93/kumo/releases/latest/download/kumo-linux-arm64.tar.gz | tar xz
-sudo mv kumo-linux-arm64 /usr/local/bin/kumo
+sudo mv kumo /usr/local/bin/
 ```
 
 ## Prerequisites
