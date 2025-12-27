@@ -11,6 +11,14 @@ Cloudflare Workers TUI manager. Quickly list and open your Workers in the browse
 
 ## Installation
 
+### mise
+
+```bash
+mise use -g github:horai93/kumo
+```
+
+### Manual
+
 Download the latest binary from [Releases](https://github.com/horai93/kumo/releases):
 
 ```bash
