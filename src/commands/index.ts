@@ -8,7 +8,7 @@ import type { Account } from '../api/types.ts'
 
 export const defaultCommand = define({
   name: 'kumo',
-  description: 'Cloudflare Workers TUI manager',
+  description: 'Open Cloudflare Worker in browser',
   args: {
     account: {
       type: 'string',
