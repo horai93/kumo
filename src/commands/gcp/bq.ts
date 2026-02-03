@@ -50,9 +50,7 @@ export const gcpBqCommand = define({
           message: 'Select a project:',
           source: async (input) => {
             const filtered = input
-              ? projects.filter(
-                  (p) => fuzzyMatch(p.projectId, input) || fuzzyMatch(p.name, input)
-                )
+              ? projects.filter((p) => fuzzyMatch(p.projectId, input) || fuzzyMatch(p.name, input))
               : projects
             return filtered.map((p) => ({
               name: p.projectId,

@@ -48,9 +48,7 @@ export const gcpGcsCommand = define({
           message: 'Select a project:',
           source: async (input) => {
             const filtered = input
-              ? projects.filter(
-                  (p) => fuzzyMatch(p.projectId, input) || fuzzyMatch(p.name, input)
-                )
+              ? projects.filter((p) => fuzzyMatch(p.projectId, input) || fuzzyMatch(p.name, input))
               : projects
             return filtered.map((p) => ({
               name: p.projectId,
@@ -73,9 +71,7 @@ export const gcpGcsCommand = define({
       const selectedBucket = await search<Bucket>({
         message: 'Select a bucket:',
         source: async (input) => {
-          const filtered = input
-            ? buckets.filter((b) => fuzzyMatch(b.name, input))
-            : buckets
+          const filtered = input ? buckets.filter((b) => fuzzyMatch(b.name, input)) : buckets
           return filtered.map((b) => ({
             name: `${b.name} (${b.location}, ${b.storageClass})`,
             value: b,
