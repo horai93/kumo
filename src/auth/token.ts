@@ -1,3 +1,4 @@
+import { chmod } from 'node:fs/promises'
 import { join } from 'node:path'
 import { stringify } from 'smol-toml'
 import { getGlobalWranglerConfigPath, type WranglerConfig } from './wrangler.ts'
@@ -43,8 +44,9 @@ export async function refreshToken(config: WranglerConfig): Promise<WranglerConf
     scopes: data.scope.split(' '),
   }
 
-  // 設定ファイルを更新
+  // 設定ファイルを更新（0o600で保護）
   await Bun.write(WRANGLER_CONFIG_PATH, stringify(newConfig))
+  await chmod(WRANGLER_CONFIG_PATH, 0o600)
 
   return newConfig
 }
