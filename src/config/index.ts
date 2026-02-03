@@ -1,6 +1,6 @@
+import { chmod, mkdir } from 'node:fs/promises'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
-import { mkdir } from 'node:fs/promises'
 
 export interface KumoConfig {
   defaultAccountId?: string
@@ -24,8 +24,9 @@ export async function loadConfig(): Promise<KumoConfig> {
 }
 
 export async function saveConfig(config: KumoConfig): Promise<void> {
-  await mkdir(CONFIG_DIR, { recursive: true })
+  await mkdir(CONFIG_DIR, { recursive: true, mode: 0o700 })
   await Bun.write(CONFIG_PATH, JSON.stringify(config, null, 2))
+  await chmod(CONFIG_PATH, 0o600)
 }
 
 export async function getDefaultAccountId(): Promise<string | undefined> {
