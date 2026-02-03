@@ -7,6 +7,7 @@ import {
   listCommand,
   openCommand,
 } from './commands/index.ts'
+import { gcpBqCommand, gcpGcsCommand, gcpRunCommand } from './commands/gcp/index.ts'
 import { checkForUpdate, getCurrentVersion } from './version.ts'
 
 const version = getCurrentVersion()
@@ -15,12 +16,15 @@ try {
   await cli(process.argv.slice(2), defaultCommand, {
     name: 'kumo',
     version,
-    description: 'Cloudflare Workers TUI manager',
+    renderHeader: async (ctx) => `${ctx.env.name} v${ctx.env.version}\n`,
     subCommands: {
       'config:get-account': configGetAccountCommand,
       'config:set-account': configSetAccountCommand,
       list: listCommand,
       open: openCommand,
+      'gcp:bq': gcpBqCommand,
+      'gcp:gcs': gcpGcsCommand,
+      'gcp:run': gcpRunCommand,
     },
   })
 
