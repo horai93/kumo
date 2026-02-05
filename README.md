@@ -1,6 +1,6 @@
 # kumo
 
-Cloudflare Workers TUI manager. Quickly list and open your Workers in the browser.
+Quick access to Cloudflare Workers and Google Cloud resources with fuzzy search.
 
 ## Features
 
