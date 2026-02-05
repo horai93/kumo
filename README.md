@@ -4,10 +4,18 @@ Cloudflare Workers TUI manager. Quickly list and open your Workers in the browse
 
 ## Features
 
-- Interactive Worker selection with search
+### Cloudflare Workers
+- Interactive Worker selection with fuzzy search
 - Opens Worker dashboard directly in browser
 - Uses existing wrangler OAuth credentials
 - Multi-account support with default account configuration
+
+### Google Cloud
+- BigQuery: Select dataset/table and copy ID
+- Cloud Storage: Select bucket and copy URI
+- Cloud Run Jobs: Select job and copy name
+- Interactive project and resource selection with fuzzy search
+- Copies to clipboard by default (or opens in browser with `-w`)
 
 ## Installation
 
@@ -51,6 +59,8 @@ kumo reads the OAuth token from `~/.wrangler/config/default.toml`.
 
 ## Usage
 
+### Cloudflare Workers
+
 ```bash
 # Interactive mode - select a Worker and open in browser
 kumo
@@ -69,6 +79,25 @@ kumo config:get-account
 # Specify account explicitly
 kumo --account <account-id>
 kumo list --account <account-id>
+```
+
+### Google Cloud
+
+Requires `gcloud` CLI with authenticated session.
+
+```bash
+# BigQuery - select dataset/table and copy ID
+kumo gcp:bq
+kumo gcp:bq --project <project-id>
+kumo gcp:bq -w  # Open in browser
+
+# Cloud Storage - select bucket and copy URI
+kumo gcp:gcs
+kumo gcp:gcs --project <project-id>
+
+# Cloud Run Jobs - select job and copy name
+kumo gcp:run
+kumo gcp:run --project <project-id> --region <region>
 ```
 
 ## Development
