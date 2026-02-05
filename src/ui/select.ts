@@ -1,5 +1,6 @@
 import { search } from '@inquirer/prompts'
 import type { Worker } from '../api/types.ts'
+import { fuzzyMatch } from './fuzzy.ts'
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString)
@@ -29,8 +30,7 @@ export async function selectWorker(workers: Worker[]): Promise<Worker> {
       if (!input) {
         return choices
       }
-      const term = input.toLowerCase()
-      return choices.filter((choice) => choice.name.toLowerCase().includes(term))
+      return choices.filter((choice) => fuzzyMatch(choice.value.id, input))
     },
     pageSize: 15,
   })
