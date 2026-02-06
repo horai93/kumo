@@ -13,6 +13,7 @@ import {
   gcpHubCommand,
   gcpProjectCommand,
   gcpRunCommand,
+  gcpSecretCommand,
 } from './commands/gcp/index.ts'
 import { checkForUpdate, getCurrentVersion } from './version.ts'
 
@@ -33,6 +34,7 @@ try {
       'gcp:gcs': gcpGcsCommand,
       'gcp:project': gcpProjectCommand,
       'gcp:run': gcpRunCommand,
+      'gcp:secret': gcpSecretCommand,
     },
   })
 

@@ -9,3 +9,9 @@ export {
   CLOUD_RUN_REGIONS,
   type Job,
 } from './cloudrun.ts'
+export {
+  getSecrets,
+  getSecretConsoleUrl,
+  parseSecretName,
+  type SecretResource,
+} from './secretmanager.ts'
