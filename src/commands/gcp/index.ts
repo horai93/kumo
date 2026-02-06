@@ -1,3 +1,5 @@
 export { gcpBqCommand } from './bq.ts'
 export { gcpGcsCommand } from './gcs.ts'
+export { gcpHubCommand } from './hub.ts'
+export { gcpProjectCommand } from './project.ts'
 export { gcpRunCommand } from './run.ts'

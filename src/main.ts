@@ -7,7 +7,13 @@ import {
   listCommand,
   openCommand,
 } from './commands/index.ts'
-import { gcpBqCommand, gcpGcsCommand, gcpRunCommand } from './commands/gcp/index.ts'
+import {
+  gcpBqCommand,
+  gcpGcsCommand,
+  gcpHubCommand,
+  gcpProjectCommand,
+  gcpRunCommand,
+} from './commands/gcp/index.ts'
 import { checkForUpdate, getCurrentVersion } from './version.ts'
 
 const version = getCurrentVersion()
@@ -22,8 +28,10 @@ try {
       'config:set-account': configSetAccountCommand,
       list: listCommand,
       open: openCommand,
+      gcp: gcpHubCommand,
       'gcp:bq': gcpBqCommand,
       'gcp:gcs': gcpGcsCommand,
+      'gcp:project': gcpProjectCommand,
       'gcp:run': gcpRunCommand,
     },
   })
