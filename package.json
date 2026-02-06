@@ -1,6 +1,6 @@
 {
   "name": "@horai93/kumo",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Quick access to Cloudflare Workers and Google Cloud resources",
   "type": "module",
   "license": "ISC",
